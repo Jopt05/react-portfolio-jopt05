@@ -8,14 +8,14 @@ export const ServicesSection = () => {
         <Service 
             goesLeft
             serviceDescription="One of the best languages I've ever learned. I'll create your desired app with Python and its framework Django."
-            serviceImage=''
+            serviceImage='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/640px-Python.svg.png'
             serviceIcon='fa-solid fa-laptop'
             serviceName='Python Development'
         />        
         <Service 
             goesLeft={ false }
             serviceDescription="I'll create your desired app with Javascript and it's frameworks like React and Express."
-            serviceImage=''
+            serviceImage='https://mindinfoservices.com/assets/img/fullstack-development.png'
             serviceIcon='fa-solid fa-code'
             serviceName='Fullstack development'
         />        

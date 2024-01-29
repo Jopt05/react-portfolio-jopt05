@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './Service.module.css'
 import globalStyles from './../../../Global.module.css'
-import HeroImage from '../../../assets/me.png'
 
 interface ServiceProps {
     serviceIcon: string;
@@ -29,7 +28,7 @@ export const Service = ({ goesLeft, serviceDescription, serviceIcon, serviceImag
             <div className={ styles.containerImage }>
                 <img 
                     className={ styles.image }
-                    src={ HeroImage }
+                    src={ serviceImage }
                 />
             </div>
         </div>
