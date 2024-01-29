@@ -1,0 +1,8 @@
+.servicesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    transition: height .3s ease-in-out;
+    margin-bottom: 30px;
+}
