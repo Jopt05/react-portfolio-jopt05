@@ -1,16 +1,16 @@
 .serviceContainer {
     display: flex;
     flex-direction: row;
-    padding: 25px 30px;
+    padding: 25px 40px;
     background-color: var(--BgContainer);
     margin-bottom: 20px;
     border-radius: 20px;
-    margin-left: 40px;
+    margin-left: 80px;
 }
 
 .goesLeft {
     margin-left: 0px;
-    margin-right: 40px;
+    margin-right: 80px;
 }
 
 .serviceContainerItem {
@@ -28,12 +28,19 @@
 }
 
 .serviceIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30px;
     height: 40px;
     padding: 10px 15px;
     border-radius: 50%;
-    background-color: blue;
+    background-color: var(--BodyBg);
     margin-bottom: 20px;
+}
+
+.serviceContainer i {
+    font-size: 24px;
 }
 
 .containerImage {

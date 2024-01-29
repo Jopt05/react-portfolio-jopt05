@@ -16,13 +16,13 @@ export const Service = ({ goesLeft, serviceDescription, serviceIcon, serviceImag
     <div className={`${styles.serviceContainer} ${ (goesLeft) ? styles.goesLeft : '' }`}>
         <div className={ styles.serviceContainerItem }>
             <div className={ styles.serviceIconContainer }>
-                {/* <img /> */}
+                <i className={ serviceIcon }></i>
             </div>
             <p className={ globalStyles.subtitle }>
-                Hola
+                { serviceName }
             </p>
             <p className={ globalStyles.description }>
-                Descripción
+                { serviceDescription }
             </p>
         </div>
         <div className={ styles.serviceContainerItem }>

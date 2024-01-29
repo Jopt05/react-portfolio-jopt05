@@ -7,24 +7,17 @@ export const ServicesSection = () => {
     <div className={ styles.servicesContainer }>
         <Service 
             goesLeft
-            serviceDescription='Desripción'
+            serviceDescription="One of the best languages I've ever learned. I'll create your desired app with Python and its framework Django."
             serviceImage=''
-            serviceIcon=''
-            serviceName='Hola'
+            serviceIcon='fa-solid fa-laptop'
+            serviceName='Python Development'
         />        
         <Service 
             goesLeft={ false }
-            serviceDescription='Desripción'
+            serviceDescription="I'll create your desired app with Javascript and it's frameworks like React and Express."
             serviceImage=''
-            serviceIcon=''
-            serviceName='Hola'
-        />        
-        <Service 
-            goesLeft
-            serviceDescription='Desripción'
-            serviceImage=''
-            serviceIcon=''
-            serviceName='Hola'
+            serviceIcon='fa-solid fa-code'
+            serviceName='Fullstack development'
         />        
     </div>
   )
