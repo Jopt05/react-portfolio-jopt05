@@ -1,0 +1,18 @@
+.title {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 85px;
+    margin-bottom: 25px;
+}
+
+.subtitle {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 18px;
+    color: #5c5b66;
+}

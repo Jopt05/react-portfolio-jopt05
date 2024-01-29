@@ -1,0 +1,25 @@
+:root {
+  --BgContainer: #EDE8FF;
+  --BodyBg: #FCF5EF;
+}
+
+* {
+  font-family: 'Rubik', sans-serif;
+}
+
+html {
+  background-color: var(--BodyBg);
+}
+
+body {
+  margin: 0;
+}
+
+.AppContainer {
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
