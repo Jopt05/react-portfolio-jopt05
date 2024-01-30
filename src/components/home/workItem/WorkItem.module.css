@@ -1,0 +1,22 @@
+.itemContainer {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+    padding: 30px 35px;
+    background-color: var(--BgContainer);
+    border-radius: 25px;
+    /* border: 1px solid red; */
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+.itemIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--BodyBg);
+    padding: 15px 20px;
+    border-radius: 100%;
+}
+

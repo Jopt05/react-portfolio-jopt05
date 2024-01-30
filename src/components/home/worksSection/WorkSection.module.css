@@ -1,0 +1,16 @@
+.WorksectionContainer {
+    display: flex;
+    /* gap: 60px; */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .WorksectionContainer {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        gap: 20px;
+        padding: 20px 5px;
+        margin-bottom: 400px;
+    }
+}

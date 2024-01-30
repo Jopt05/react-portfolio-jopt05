@@ -1,7 +1,7 @@
 .serviceContainer {
     display: flex;
     flex-direction: row;
-    padding: 25px 40px;
+    padding: 35px 40px;
     background-color: var(--BgContainer);
     margin-bottom: 40px;
     border-radius: 20px;
@@ -67,7 +67,7 @@
 
     .serviceContainerItem {
         align-items: center;
-        max-height: auto;
+        max-height: max-content;
     }
 
     .serviceContainerItem:first-child {
