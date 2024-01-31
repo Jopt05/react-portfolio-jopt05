@@ -1,24 +1,54 @@
 import React from 'react'
 import styles from './ServicesSection.module.css'
 import { Service } from '../service/Service'
+import useFetch from '../../../hooks/useFetch';
+import { Services } from '../../../interfaces/api';
+import { Loader } from '../../shared/Loader/Loader';
 
 export const ServicesSection = () => {
+
+  const baseUrl = import.meta.env.VITE_API_URL;
+
+  if( !baseUrl ) return;
+
+  const { data, error, loading } = useFetch<Services>({
+    url: `${baseUrl}/api/servicios`,
+    method: 'get'
+  });
+
+  const getIconName = (iconIndex: number) => {
+    switch (iconIndex) {
+      case 0:
+        return 'bx bx-code-alt'
+        
+      case 1: 
+        return 'bx bx-devices'
+    
+      default:
+        return 'bx bx-devices'
+    }
+  }
+
   return (
     <div className={ styles.servicesContainer }>
-        <Service 
-            goesLeft
-            serviceDescription="One of the best languages I've ever learned. I'll create your desired app with Python and its framework Django."
-            serviceImage='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/640px-Python.svg.png'
-            serviceIcon='fa-solid fa-laptop'
-            serviceName='Python Development'
-        />        
-        <Service 
-            goesLeft={ false }
-            serviceDescription="I'll create your desired app with Javascript and it's frameworks like React and Express."
-            serviceImage='https://mindinfoservices.com/assets/img/fullstack-development.png'
-            serviceIcon='fa-solid fa-code'
-            serviceName='Fullstack development'
-        />        
+        {
+          ( !loading && data != null ) && 
+            data.services.map((service, index) => service.service_state != false && (
+              <Service 
+                goesLeft={ ( index % 2 == 0 ) }
+                serviceDescription={ service.service_description }
+                serviceImage={ service.service_image }
+                serviceName={ service.service_name }
+                serviceIcon={ getIconName(service.service_topic) }
+                key={index}
+              />
+            ))
+        }
+        {
+          ( loading ) && (
+            <Loader />
+          )
+        }
     </div>
   )
 }
