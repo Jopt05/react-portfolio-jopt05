@@ -9,15 +9,23 @@
     /* border: 1px solid red; */
     text-align: center;
     flex: 0 0 auto;
+    align-items: center;
 }
 
 .itemIconContainer {
     display: flex;
+    width: 40px;
+    height: 40px;
     justify-content: center;
     align-items: center;
     background-color: var(--BodyBg);
     padding: 15px 20px;
     border-radius: 100%;
+    margin-bottom: 25px;
+}
+
+.itemIconContainer i {
+    font-size: 24px;
 }
 
 .itemToolsText {
