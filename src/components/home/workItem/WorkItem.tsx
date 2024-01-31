@@ -16,14 +16,14 @@ export const WorkItem = ({ project_description, project_name, project_technologi
 
   const getItemTopic = (topic: number) => {
     switch (topic) {
-      case 0:
-        return 'bx bxs-cloud-download';
-
       case 1:
         return 'bx bx-code-alt';
 
       case 2:
         return 'bx bx-desktop';
+        
+      case 3:
+        return 'bx bxs-cloud-download';
     
       default:
         break;
