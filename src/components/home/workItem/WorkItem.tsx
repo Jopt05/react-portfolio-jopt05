@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './WorkItem.module.css'
 import globalStyles from './../../../Global.module.css'
+import Animations from './../../../Animations.module.css'
 import { Button } from '../../shared/button/Button'
-import { Project, ProjectTecnology } from '../../../interfaces/api'
+import { ProjectTecnology } from '../../../interfaces/api'
 
 interface WorkItemProps {
   project_description: string;
@@ -31,7 +32,7 @@ export const WorkItem = ({ project_description, project_name, project_technologi
   }
 
   return (
-    <div className={ styles.itemContainer }>
+    <div className={`${styles.itemContainer} ${ Animations.bounceIn }`}>
         <div className={ styles.itemIconContainer }>
             <i className={ getItemTopic(project_topic) }></i>
         </div>

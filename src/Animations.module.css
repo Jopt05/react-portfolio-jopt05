@@ -2,6 +2,10 @@
     animation: fadeInAnimation .8s ease-in-out forwards;
 }
 
+.bounceIn {
+    animation: bounceInAnimation .8s ease-in-out forwards;
+}
+
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
@@ -9,5 +13,23 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes bounceInAnimation {
+    0% {
+        transform: translateX(5000px);
+    }
+
+    /* 80% {
+        transform: translateX(-300px);
+    }
+
+    90% {
+        transform: translateX(300px);
+    } */
+
+    100% {
+        transform: translateX(0px);
     }
 }

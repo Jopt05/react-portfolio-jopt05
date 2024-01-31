@@ -1,6 +1,6 @@
 
 .formContainer {
-    display: flex;
+    display: none;
     position: relative;
     flex-direction: column;
     padding: 40px 60px;
@@ -8,6 +8,10 @@
     border-radius: 12px;
     background-color: var(--BgContainer);
     text-align: center;
+}
+
+.formContainerShown {
+    display: flex;
 }
 
 .formImageContainer {
@@ -35,6 +39,7 @@
     display: flex;
     padding: 10px 10px;
     width: 100%;
+    height: 150px;
     border: none;
     border-bottom: 2px solid transparent;
     transition: all .2s ease-in-out;
@@ -56,9 +61,5 @@
     .formImageContainer {
         top: -130px;
         right: 0;
-    }
-
-    .textArea {
-        height: 350px;
     }
 }

@@ -3,7 +3,11 @@ import styles from './ContactCTA.module.css'
 import globalStyles from '../../../Global.module.css'
 import { Button } from '../../shared/button/Button'
 
-export const ContactCTA = () => {
+interface ContactCTAProps {
+    onClick: () => void;
+}
+
+export const ContactCTA = ({ onClick }: ContactCTAProps) => {
   return (
     <div className={ styles.container }>
         <div className={ styles.textContainer }>
@@ -16,7 +20,7 @@ export const ContactCTA = () => {
         </div>
         <Button 
             text="Let's chat"
-            onClick={ (e) => console.log("Click") }
+            onClick={ onClick }
         />
     </div>
   )

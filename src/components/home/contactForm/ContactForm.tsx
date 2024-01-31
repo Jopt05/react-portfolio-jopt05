@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './ContactForm.module.css'
 import globalStyles from '../../../Global.module.css'
+import Animations from '../../../Animations.module.css'
 import { Input } from '../../shared/Input/Input'
 import image from '../../../assets/sittinperson.png'
 import { Button } from '../../shared/button/Button'
 import { useForm } from '../../../hooks/useForm'
 
-export const ContactForm = () => {
+interface ContactFormProps {
+    isShown: boolean;
+}
+
+export const ContactForm = ({ isShown }: ContactFormProps) => {
 
     const { email, handleChange, message, name } = useForm({
         name: '',
@@ -14,8 +19,18 @@ export const ContactForm = () => {
         message: ''
     })
 
+    useEffect(() => {
+        if( !isShown ) return;
+        setTimeout(() => {
+            document.querySelector('form').scrollIntoView({behavior: 'smooth'})
+        }, 1000);
+    }, [isShown])
+    
+    
   return (
-    <form className={ styles.formContainer }>
+    <form 
+        className={`${ styles.formContainer } ${ isShown ? `${Animations.bounceIn} ${ styles.formContainerShown }` : '' }`}
+    >
         <div className={ styles.formImageContainer }>
             <img 
                 className={ styles.formImage }

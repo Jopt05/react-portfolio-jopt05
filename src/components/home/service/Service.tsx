@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Service.module.css'
 import globalStyles from './../../../Global.module.css'
+import Animations from './../../../Animations.module.css'
 
 interface ServiceProps {
     serviceIcon: string;
@@ -12,7 +13,7 @@ interface ServiceProps {
 
 export const Service = ({ goesLeft, serviceDescription, serviceIcon, serviceImage, serviceName }: ServiceProps) => {
   return (
-    <div className={`${styles.serviceContainer} ${ (goesLeft) ? styles.goesLeft : '' }`}>
+    <div className={`${styles.serviceContainer} ${ Animations.bounceIn } ${ (goesLeft) ? styles.goesLeft : '' }`}>
         <div className={ styles.serviceContainerItem }>
             <div className={ styles.serviceIconContainer }>
                 <i className={ serviceIcon }></i>
