@@ -13,10 +13,27 @@ interface WorkItemProps {
 }
 
 export const WorkItem = ({ project_description, project_name, project_technologies, project_topic, project_url }: WorkItemProps) => {
+
+  const getItemTopic = (topic: number) => {
+    switch (topic) {
+      case 0:
+        return 'bx bxs-cloud-download';
+
+      case 1:
+        return 'bx bx-code-alt';
+
+      case 2:
+        return 'bx bx-desktop';
+    
+      default:
+        break;
+    }
+  }
+
   return (
     <div className={ styles.itemContainer }>
         <div className={ styles.itemIconContainer }>
-            <i className={ 'fa-solid fa-laptop' }></i>
+            <i className={ getItemTopic(project_topic) }></i>
         </div>
         <p className={ globalStyles.subtitle }>
             { project_name }
