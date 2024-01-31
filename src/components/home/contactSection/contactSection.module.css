@@ -1,0 +1,7 @@
+
+.sectionContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0px;
+    /* background-color: red; */
+}
