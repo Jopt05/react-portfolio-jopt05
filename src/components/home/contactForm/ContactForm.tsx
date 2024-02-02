@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './ContactForm.module.css'
 import globalStyles from '../../../Global.module.css'
 import Animations from '../../../Animations.module.css'
@@ -6,6 +6,11 @@ import { Input } from '../../shared/Input/Input'
 import image from '../../../assets/sittinperson.png'
 import { Button } from '../../shared/button/Button'
 import { useForm } from '../../../hooks/useForm'
+
+
+type handleSubmitEvent = 
+    | React.FormEvent<HTMLFormElement> 
+    | React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 interface ContactFormProps {
     isShown: boolean;
@@ -17,7 +22,7 @@ export const ContactForm = ({ isShown }: ContactFormProps) => {
         name: '',
         email: '',
         message: ''
-    })
+    });
 
     useEffect(() => {
         if( !isShown ) return;
@@ -25,11 +30,16 @@ export const ContactForm = ({ isShown }: ContactFormProps) => {
             document.querySelector('form').scrollIntoView({behavior: 'smooth'})
         }, 1000);
     }, [isShown])
+
+    const handleSubmit = (event: handleSubmitEvent) => {
+        event.preventDefault();
+    }
     
     
   return (
     <form 
         className={`${ styles.formContainer } ${ isShown ? `${Animations.bounceIn} ${ styles.formContainerShown }` : '' }`}
+        onSubmit={ (e) => handleSubmit(e) }
     >
         <div className={ styles.formImageContainer }>
             <img 
@@ -63,7 +73,7 @@ export const ContactForm = ({ isShown }: ContactFormProps) => {
         </div>
         <Button 
             text='Submit'
-            onClick={ (e) => console.log("Hola!") }
+            onClick={ (e) => handleSubmit(e) }
         />
     </form>
   )
