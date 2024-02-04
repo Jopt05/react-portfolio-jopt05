@@ -71,7 +71,7 @@ export const ContactForm = ({ isShown, onSubmitted }: ContactFormProps) => {
 
         const templateParams = {
             to_name: "Jesus Puentes",
-            from_name: `${email} -  ${message}`,
+            from_name: `${email}`,
             message
         }
         const emailResponse = await emailjs.send(
