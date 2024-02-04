@@ -1,8 +1,17 @@
 .buttonContainer {
     display: flex;
     justify-content: center;
+    height: 60px;
     align-items: center;
     text-align: center;
+}
+
+.buttonContainer div {
+    height: 30px;
+}
+
+.buttonContainer img {
+    height: 100%;
 }
 
 .button {

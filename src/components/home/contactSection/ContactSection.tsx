@@ -14,6 +14,7 @@ export const ContactSection = () => {
         />
         <ContactForm 
           isShown={ show }
+          onSubmitted={ (value) => setShow(value) }
         />
     </div>
   )

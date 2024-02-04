@@ -11,9 +11,14 @@ export const useForm = <T extends Object>( initState: T ) => {
         })
     }
 
+    const resetForm = () => {
+        setForm(initState);
+    }
+
     return {
         ...form,
-        handleChange
+        handleChange,
+        resetForm
     }
 
 }

@@ -13,9 +13,35 @@ interface UseFetchState<T> {
     error: string | null;
 }
 
-const useFetch = <T,>({ url, method, body }: UseFetchProps): UseFetchState<T> => {
+const useFetch = <T,>({ url, method }: UseFetchProps): UseFetchState<T> => {
   const isMounted = useRef(true);
   const [state, setState] = useState<UseFetchState<T>>({data: null, loading: true, error: null});
+
+  const handlePost = (body: any) => {
+    setState({
+      ...state,
+      loading: true
+    })
+    axios({
+      method: 'post',
+      url
+    })
+      .then((response) => {
+        setState({
+          data: response.data,
+          error: null,
+          loading: false
+        })
+      })
+      .catch((error) => {
+          console.log({error});
+          setState({
+              data: null,
+              loading: false,
+              error: 'There was a problem loading the information'
+          })
+      });
+  }
 
   useEffect(() => {
     return () => {
@@ -25,25 +51,32 @@ const useFetch = <T,>({ url, method, body }: UseFetchProps): UseFetchState<T> =>
 
   useEffect(() => {
     setState({data: null, loading: true, error: null});
-    axios({
-        method,
-        url
-    })
-        .then((response) => {
-            setState({
-                data: response.data,
-                error: null,
-                loading: false
-            })
+    if( method == 'get' ) {
+        axios({
+            method,
+            url
         })
-        .catch((error) => {
-            console.log({error});
-            setState({
-                data: null,
-                loading: false,
-                error: 'There was a problem loading the information'
+            .then((response) => {
+                setState({
+                    data: response.data,
+                    error: null,
+                    loading: false
+                })
             })
-        })
+            .catch((error) => {
+                console.log({error});
+                setState({
+                    data: null,
+                    loading: false,
+                    error: 'There was a problem loading the information'
+                })
+            });
+    } else {
+      setState({
+        ...state,
+        loading: false
+      })
+    }
   }, [url]);
 
   return state;

@@ -15,7 +15,7 @@ export const HomePage = () => {
         <ServicesSection />
         <Divider title='Work' />
         <WorkSection />
-        {/* <ContactSection /> */}
+        <ContactSection />
     </>
   )
 }
