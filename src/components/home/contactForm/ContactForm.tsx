@@ -60,11 +60,8 @@ export const ContactForm = ({ isShown, onSubmitted }: ContactFormProps) => {
         if( name == '' || email == '' || message == '' ) {
             setEmailData({
                 ...emailData,
+                isLoading: false,
                 errorMessage: "Fill all the fields, please."
-            })
-            setEmailData({
-                ...emailData,
-                isLoading: false
             })
             return;
         }
