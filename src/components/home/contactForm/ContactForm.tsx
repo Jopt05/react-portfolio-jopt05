@@ -7,11 +7,8 @@ import image from '../../../assets/sittinperson.png'
 import { Button } from '../../shared/button/Button'
 import { useForm } from '../../../hooks/useForm'
 import { useEmail } from '../../../hooks/useEmail'
-
-
-type handleSubmitEvent = 
-    | React.FormEvent<HTMLFormElement> 
-    | React.MouseEvent<HTMLButtonElement, MouseEvent>;
+import { handleSubmitEvent } from '../../../interfaces/form'
+import { FadeInMessage } from '../../shared/fadeInMessage/FadeInMessage'
 
 interface ContactFormProps {
     isShown: boolean;
@@ -80,15 +77,10 @@ export const ContactForm = ({ isShown, onSubmitted }: ContactFormProps) => {
                 onChange={ (e) => handleChange( e.target.value, 'message' ) }
             />
         </div>
-        <div className={ styles.feedbackContainer }>
-            {
-                (emailData.errorMessage != null ) && (
-                    <p className={`${globalStyles.description} ${ Animations.fadeIn }`}>
-                        { emailData.errorMessage }
-                    </p>
-                )
-            }
-        </div>
+        <FadeInMessage 
+            indicator={ emailData.errorMessage }
+            text={ emailData.errorMessage }
+        />
         <Button 
             text='Submit'
             onClick={ (e) => handleSubmit(e) }

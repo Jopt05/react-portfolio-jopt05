@@ -1,0 +1,32 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--BgContainer);
+    width: 350px;
+    padding: 30px 40px;
+    border-radius: 12px;
+}
+
+.formContainer p {
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+
+    .formContainer {
+        width: 100%;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.28);
+
+    }
+}

@@ -6,9 +6,10 @@ interface InputProps {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
+    type?: React.HTMLInputTypeAttribute;
 }
 
-export const Input = ({ name, value, onChange, placeholder }: InputProps) => {
+export const Input = ({ name, value, onChange, placeholder, type = 'text' }: InputProps) => {
   return (
     <div className={ styles.inputContainer }>
         <input 
@@ -17,6 +18,7 @@ export const Input = ({ name, value, onChange, placeholder }: InputProps) => {
             onChange={ (e) => onChange(e) }
             value={ value }
             placeholder={ placeholder }
+            type={ type }
         />
     </div>
   )

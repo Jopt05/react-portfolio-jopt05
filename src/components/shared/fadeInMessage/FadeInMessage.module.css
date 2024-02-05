@@ -1,0 +1,6 @@
+.feedbackContainer {
+    display: flex;
+    justify-content: center;
+    min-height: 40px;
+    max-height: 60px;
+}
