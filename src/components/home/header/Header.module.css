@@ -25,6 +25,12 @@
     object-fit: cover;
 }
 
+.adminMesageContainer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 @media only screen and (max-width: 600px) {
     .headerContainer {
         justify-content: center;

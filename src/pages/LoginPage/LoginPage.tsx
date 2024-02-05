@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './LoginPage.module.css'
 import globalStyles from '../../Global.module.css'
 import Animations from '../../Animations.module.css'
@@ -10,6 +10,7 @@ import { handleSubmitEvent } from '../../interfaces/form'
 import axios from 'axios'
 import { FadeInMessage } from '../../components/shared/fadeInMessage/FadeInMessage'
 import { redirect, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext'
 
 interface LoginDataState {
   data: User | null;
@@ -22,6 +23,8 @@ export const LoginPage = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
 
   if( !baseUrl ) return;
+
+  const { signIn } = useContext( AuthContext );
 
   const navigate = useNavigate();
 
@@ -56,6 +59,7 @@ export const LoginPage = () => {
             errorMessage: 'Login successfull!',
             isLoading: false
           })
+          signIn();
           setTimeout(() => {
             navigate('/');
           }, 1500);
