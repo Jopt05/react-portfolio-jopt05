@@ -4,6 +4,7 @@ import styles from './Header.module.css'
 import Animations from '../../../Animations.module.css'
 import globalStyles from '../../../Global.module.css'
 import { AuthContext } from '../../../context/AuthContext'
+import { ModalMessage } from '../../shared/modalMessage/ModalMessage'
 
 export const Header = () => {
 
@@ -27,10 +28,10 @@ export const Header = () => {
       </div>
       {
         (authState.isLoggedIn) && (  
-          <div className={styles.adminMesageContainer}>
-            <p className={globalStyles.subtitle}>
-              Hola Jesus!
-            </p>
+          <div className={ styles.modalContainer }>
+            <ModalMessage
+              text='Estás en modo administrador'
+            />
           </div>
         )
       }

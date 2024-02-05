@@ -25,10 +25,12 @@
     object-fit: cover;
 }
 
-.adminMesageContainer {
+.modalContainer {
     display: flex;
     justify-content: center;
     text-align: center;
+    width: 20%;
+    margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
@@ -39,4 +41,8 @@
     .text {
         display: none;
     }   
+
+    .modalContainer {
+        width: 80%;
+    }
 }
