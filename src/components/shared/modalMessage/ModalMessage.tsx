@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './ModalMessage.module.css'
 
 interface ModalMessageProps {
@@ -6,11 +6,22 @@ interface ModalMessageProps {
 }
 
 export const ModalMessage = ({ text }: ModalMessageProps) => {
+
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-    <div className={ styles.modalContainer }>
-        <p className={styles.modalText}>
-            { text }
-        </p>
+    <div className={`${styles.modalContainer} ${ isOpen ? styles.openedModal : '' }`}>
+      <div className={ styles.buttonContainer }>
+        <button
+          onClick={ () => setIsOpen(!isOpen) }
+          className={ styles.button }
+        >
+          { '>' }
+        </button>
+      </div>
+      <p className={styles.modalText}>
+          { text }
+      </p>
     </div>
   )
 }
