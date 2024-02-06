@@ -3,9 +3,10 @@ import styles from './ModalMessage.module.css'
 
 interface ModalMessageProps {
     text: string;
+    children?: JSX.Element
 }
 
-export const ModalMessage = ({ text }: ModalMessageProps) => {
+export const ModalMessage = ({ text, children }: ModalMessageProps) => {
 
   const [isOpen, setIsOpen] = useState(true);
 
@@ -19,9 +20,16 @@ export const ModalMessage = ({ text }: ModalMessageProps) => {
           { '>' }
         </button>
       </div>
-      <p className={styles.modalText}>
-          { text }
-      </p>
+      {
+        ( children == undefined ) && (
+          <p className={styles.modalText}>
+              { text }
+          </p>
+        )
+      }
+      {
+        ( children != undefined ) && ( children )
+      }
     </div>
   )
 }
