@@ -28,7 +28,11 @@ export const ModalMessage = ({ text, children }: ModalMessageProps) => {
         )
       }
       {
-        ( children != undefined ) && ( children )
+        ( children != undefined ) && ( 
+          <div className={styles.childrenContainer}>
+            { children }
+          </div>
+         )
       }
     </div>
   )

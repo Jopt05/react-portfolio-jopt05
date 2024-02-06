@@ -1,0 +1,76 @@
+
+.createBlogContainer {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0px;
+    /* background-color: red; */
+}
+
+.blogContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px;
+    /* background-color: red; */
+}
+
+.blogContainer h1 {
+    font-size: 40px;
+    margin: 20px 0px;
+}
+
+.blogContainer p {
+    margin: 25px 0px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.blogContainer img {
+    max-height: 300px;
+}
+
+.editorContainer {
+    display: flex;
+    position: fixed;
+    width: 40%;
+    margin-left: 40%;
+    border-radius: 12px;
+    transform: translateX(-45%);
+    padding: 20px 25px;
+    background-color: var(--BgContainer);
+    /* background-color: blue; */
+    bottom: 20px;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.28);
+}
+
+.editorText {
+    width: 100%;
+    resize: none;
+    height: 100px;
+    border-radius: 12px;
+    border: 2px solid red;
+    padding: 10px 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    .editorContainer {
+        width: 50%;
+    }
+
+    .blogContainer h1,
+    .blogContainer h2,
+    .blogContainer h3 {
+        font-size: 34px;
+    }
+
+    .blogContainer p {
+        font-size: 18px;
+    }
+
+    .blogContainer img {
+        max-height: 200px;
+    }
+}

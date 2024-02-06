@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "../pages/HomePage";
 import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { AuthProvider } from "../context/AuthContext";
+import { BlogsIndex } from "../pages/BlogsIndexPage/BlogsIndex";
+import { PrivateRoute } from "./PrivateRoute";
+import { CreateBlogPage } from "../pages/CreateBlogPage/CreateBlogPage";
 
 const AppRouter = () => {
   return (
@@ -10,6 +13,9 @@ const AppRouter = () => {
         <Routes>
               <Route path="/" element={ <HomePage /> } />
               <Route path="/login" element={ <LoginPage /> } />
+              <Route path="/blogs" element={ <BlogsIndex /> } />
+              <Route path="/blogs/create" element={ <PrivateRoute><CreateBlogPage /></PrivateRoute> } />
+              {/* <Route path="/blogs/create" element={ <CreateBlogPage /> } /> */}
           </Routes>
       </AppState>
     </BrowserRouter>
