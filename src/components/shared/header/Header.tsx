@@ -4,7 +4,8 @@ import styles from './Header.module.css'
 import Animations from '../../../Animations.module.css'
 import globalStyles from '../../../Global.module.css'
 import { AuthContext } from '../../../context/AuthContext'
-import { ModalMessage } from '../../shared/modalMessage/ModalMessage'
+import { ModalMessage } from '../modalMessage/ModalMessage'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
 
@@ -18,6 +19,14 @@ export const Header = () => {
               className={ styles.image }
               src={ Logo }
             />
+        </div>
+        <div className={ styles.navContainer }>
+          <Link to='/' className={styles.link} >
+            Home
+          </Link>
+          <Link to='/blogs' className={styles.link} >
+            Blogs
+          </Link>
         </div>
         <p className={ styles.text }>
             WEB DEVELOPMENT

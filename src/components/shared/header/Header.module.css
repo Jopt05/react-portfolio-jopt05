@@ -15,8 +15,18 @@
     background-color: blue;
 }
 
-.text {
+.navContainer {
+    display: flex;
+    /* background-color: red; */
+    gap: 20px;
+}
 
+.link {
+    text-decoration: none;
+}
+
+.linkActive {
+    color: darkblue;
 }
 
 .image {

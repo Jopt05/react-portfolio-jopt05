@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from '../components/home/header/Header'
+import { Header } from '../components/shared/header/Header'
 import { Hero } from '../components/home/hero/Hero'
 import { Divider } from '../components/home/divider/Divider'
 import { ServicesSection } from '../components/home/servicesSection/ServicesSection'
@@ -9,7 +9,6 @@ import { ContactSection } from '../components/home/contactSection/ContactSection
 export const HomePage = () => {
   return (
     <>
-        <Header />
         <Hero />
         <Divider title='Services' />
         <ServicesSection />

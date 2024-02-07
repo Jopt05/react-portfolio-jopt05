@@ -6,11 +6,13 @@ import { BlogsIndex } from "../pages/BlogsIndexPage/BlogsIndex";
 import { PrivateRoute } from "./PrivateRoute";
 import { CreateBlogPage } from "../pages/CreateBlogPage/CreateBlogPage";
 import { BlogPage } from "../pages/BlogPage/BlogPage";
+import { Header } from "../components/shared/header/Header";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <AppState>
+        <Header />
         <Routes>
               <Route path="/" element={ <HomePage /> } />
               <Route path="/login" element={ <LoginPage /> } />
