@@ -4,7 +4,7 @@
     position: relative;
     flex-direction: column;
     align-items: center;
-    padding: 60px 0px;
+    padding: 20px 20%;
     /* background-color: red; */
 }
 
@@ -22,10 +22,21 @@
     margin: 20px 0px;
 }
 
+.titleContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    font-size: 50px !important;
+    font-weight: bold;
+}
+
 .blogContainer p {
     margin: 25px 0px;
     font-size: 20px;
-    text-align: center;
+    text-align: justify;
+    line-height: 25px;
 }
 
 .blogContainer img {
@@ -56,6 +67,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .createBlogContainer {
+        padding: 20px 0px;
+    }
+
     .editorContainer {
         width: 50%;
     }
