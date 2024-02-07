@@ -5,6 +5,7 @@ import { AuthProvider } from "../context/AuthContext";
 import { BlogsIndex } from "../pages/BlogsIndexPage/BlogsIndex";
 import { PrivateRoute } from "./PrivateRoute";
 import { CreateBlogPage } from "../pages/CreateBlogPage/CreateBlogPage";
+import { BlogPage } from "../pages/BlogPage/BlogPage";
 
 const AppRouter = () => {
   return (
@@ -14,8 +15,13 @@ const AppRouter = () => {
               <Route path="/" element={ <HomePage /> } />
               <Route path="/login" element={ <LoginPage /> } />
               <Route path="/blogs" element={ <BlogsIndex /> } />
-              <Route path="/blogs/create" element={ <PrivateRoute><CreateBlogPage /></PrivateRoute> } />
-              {/* <Route path="/blogs/create" element={ <CreateBlogPage /> } /> */}
+              <Route path="/blogs/:id/read" element={ <BlogPage /> } />
+              <Route path="/blogs/create" element={ 
+                  <PrivateRoute>
+                    <CreateBlogPage />
+                  </PrivateRoute>
+                } 
+              />
           </Routes>
       </AppState>
     </BrowserRouter>

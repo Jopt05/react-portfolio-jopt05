@@ -5,28 +5,22 @@ import { BlogItem } from '../../components/blogs/BlogItem'
 import { AuthContext } from '../../context/AuthContext'
 import { ModalMessage } from '../../components/shared/modalMessage/ModalMessage'
 import { Link } from 'react-router-dom'
-
-const blogExampleList = [
-  {
-    name: "First blog",
-    link: 'www.google.com',
-    createdAt: new Date()
-  },
-  {
-    name: "Second blog",
-    link: 'www.google.com',
-    createdAt: new Date()
-  },
-  {
-    name: "Third blog",
-    link: 'www.google.com',
-    createdAt: new Date()
-  },
-]
+import useFetch from '../../hooks/useFetch'
+import { Blogs } from '../../interfaces/api'
+import { Loader } from '../../components/shared/Loader/Loader'
 
 export const BlogsIndex = () => {
 
+  const baseUrl = import.meta.env.VITE_API_URL;
+
+  if( !baseUrl ) return;
+
   const { authState } = useContext( AuthContext );
+
+  const { data, error, loading } = useFetch<Blogs>({
+    url: `${baseUrl}/api/blogs/`,
+    method: 'get'
+  });
 
   return (
     <div className={ styles.mainContainer }>
@@ -53,11 +47,14 @@ export const BlogsIndex = () => {
       }
       <div className={ styles.blogsContainer }>
         {
-          blogExampleList.map( blog => (
+          (loading) && <Loader />
+        }
+        {
+          ( data != null ) && data.blogs.map( blog => (
             <BlogItem 
-              createdAt={ blog.createdAt }
-              link={ blog.link }
-              name={ blog.name }
+              createdAt={ new Date(blog.createdAt) }
+              link={ `/blogs/${blog._id}/read` }
+              name={ blog.blog_name }
             />
           ) )
         }
