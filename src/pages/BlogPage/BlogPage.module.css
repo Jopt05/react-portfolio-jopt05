@@ -4,7 +4,7 @@
     position: relative;
     flex-direction: column;
     align-items: center;
-    padding: 60px 0px;
+    padding: 20px 0px;
     /* background-color: red; */
 }
 
@@ -35,7 +35,8 @@
 .blogContainer p {
     margin: 25px 0px;
     font-size: 20px;
-    text-align: center;
+    text-align: justify;
+    line-height: 25px;
 }
 
 .blogContainer img {
@@ -50,6 +51,7 @@
     .blogContainer h1,
     .blogContainer h2,
     .blogContainer h3 {
+        text-align: center;
         font-size: 34px;
     }
 
