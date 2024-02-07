@@ -24,6 +24,12 @@ const AppRouter = () => {
                   </PrivateRoute>
                 } 
               />
+              <Route path="/blogs/:id/edit" element={ 
+                  <PrivateRoute>
+                    <CreateBlogPage />
+                  </PrivateRoute>
+                } 
+              />
           </Routes>
       </AppState>
     </BrowserRouter>

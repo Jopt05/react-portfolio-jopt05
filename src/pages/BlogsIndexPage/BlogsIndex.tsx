@@ -55,6 +55,7 @@ export const BlogsIndex = () => {
               createdAt={ new Date(blog.createdAt) }
               link={ `/blogs/${blog._id}/read` }
               name={ blog.blog_name }
+              id={ blog._id }
             />
           ) )
         }

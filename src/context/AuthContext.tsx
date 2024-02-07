@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 
  interface AuthState {
     isLoggedIn: boolean;
+    token?: string;
 }
 
 const authInitialState: AuthState = {
@@ -11,7 +12,7 @@ const authInitialState: AuthState = {
 
 interface AuthContextProps {
     authState: AuthState;
-    signIn: () => void;
+    signIn: (token: string) => void;
 }
 
 export const AuthContext = createContext({} as AuthContextProps);
@@ -23,12 +24,13 @@ export const AuthProvider = ({ children }: any) => {
     if( !baseUrl ) return;
 
     const [authState, setAuthState] = useState<AuthState>({
-        isLoggedIn: false,
+        isLoggedIn: false
     })
 
-    const signIn = () => {
+    const signIn = (token: string) => {
         setAuthState({
-            isLoggedIn: true
+            isLoggedIn: true,
+            token: token
         })
     }
 
@@ -48,7 +50,8 @@ export const AuthProvider = ({ children }: any) => {
         .then((response) => {
             if( response.status == 200 ) {
                 setAuthState({
-                    isLoggedIn: true
+                    isLoggedIn: true,
+                    token: token
                 })
             }
         })

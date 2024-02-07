@@ -1,10 +1,16 @@
 
 .blogItemContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 10px 0px;
     padding-bottom: 10px;
     border-bottom: 1px solid #5c5b66;
+}
+
+.blogItemInfoContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .blogItemTitle {
@@ -15,4 +21,15 @@
 
 .blogItemDate {
     font-size: 14px;
+}
+
+.blogIconContainer {
+    display: flex;
+    width: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.blogIconContainer i {
+    color: blue;
 }

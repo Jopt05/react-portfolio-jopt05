@@ -59,7 +59,7 @@ export const LoginPage = () => {
             errorMessage: 'Login successfull!',
             isLoading: false
           })
-          signIn();
+          signIn( response.data.token );
           setTimeout(() => {
             navigate('/');
           }, 1500);
