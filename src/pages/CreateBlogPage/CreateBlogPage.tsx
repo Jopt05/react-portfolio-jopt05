@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import styles from './CreateBlogPage.module.css'
 import { ModalMessage } from '../../components/shared/modalMessage/ModalMessage'
 import Markdown from 'react-markdown'
-import { redirect, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { GetBlog } from '../../interfaces/api'
 import { Input } from '../../components/shared/Input/Input'
@@ -25,6 +25,7 @@ export const CreateBlogPage = () => {
   const { authState } = useContext( AuthContext );
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
@@ -57,12 +58,12 @@ export const CreateBlogPage = () => {
     })
       .then( response => {
         setIsLoadingSubmit(false);
+        navigate("/blogs");
       } )
       .catch( err => {
         console.log("Error al enviar")
         console.log(err)
       })
-    return redirect("/blogs")
   }
 
   useEffect(() => {

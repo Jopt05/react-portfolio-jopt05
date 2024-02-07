@@ -89,6 +89,10 @@
         padding: 20px 0px;
     }
 
+    .blogContainer {
+        padding-bottom: 320px;
+    }
+
     .editorContainer {
         width: 50%;
     }
