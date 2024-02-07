@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './BlogPage.module.css'
 import Markdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
@@ -19,7 +19,13 @@ export const BlogPage = () => {
         method: 'get'
     });
 
-  const [markdown, setMarkdown] = useState( ( data != null ) ? data.blog.blog_text : '# Titulo!' );
+  const [markdown, setMarkdown] = useState('# Titulo');
+
+  useEffect(() => {
+    if ( data == null ) return;
+    setMarkdown(data.blog.blog_text)
+  }, [data])
+  
 
   return (
     <>
