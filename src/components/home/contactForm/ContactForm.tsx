@@ -83,6 +83,7 @@ export const ContactForm = ({ isShown, onSubmitted }: ContactFormProps) => {
         />
         <Button 
             text='Submit'
+            type='submit'
             onClick={ (e) => handleSubmit(e) }
             isLoadingAction={ emailData.isLoading }
         />

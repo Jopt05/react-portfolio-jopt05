@@ -6,9 +6,10 @@ interface ButtonProps {
     text: string;
     onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     isLoadingAction?: boolean;
+    type?: "button" | "submit" | "reset";
 }
 
-export const Button = ({ text, onClick, isLoadingAction }: ButtonProps) => {
+export const Button = ({ text, onClick, isLoadingAction, type = 'button' }: ButtonProps) => {
   return (
     <div className={ styles.buttonContainer }>
       {
@@ -16,7 +17,7 @@ export const Button = ({ text, onClick, isLoadingAction }: ButtonProps) => {
           ? <Loader />
           : <button 
                 className={ styles.button }
-                type='button'
+                type={ type }
                 onClick={ (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onClick(e) }
             >
                 { text }
