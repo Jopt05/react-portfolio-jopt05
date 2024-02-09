@@ -50,7 +50,7 @@ export const BlogsIndex = () => {
           (loading) && <Loader />
         }
         {
-          ( data != null ) && data.blogs.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() ).map( blog => (
+          ( data != null ) && data.blogs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime() ).map( blog => (
             <BlogItem 
               createdAt={ new Date(blog.createdAt) }
               link={ `/blogs/${blog._id}/read` }
