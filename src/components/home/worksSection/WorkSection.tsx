@@ -23,6 +23,7 @@ export const WorkSection = () => {
             data.projects.map((project, index) => project.project_state != false && (
               <WorkItem
                 project_description={ project.project_description }
+                _id={ project._id }
                 project_name={ project.project_name }
                 project_technologies={ project.project_tecnologies }
                 project_topic={ project.project_topic }

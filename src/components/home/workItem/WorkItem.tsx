@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './WorkItem.module.css'
 import globalStyles from './../../../Global.module.css'
 import Animations from './../../../Animations.module.css'
 import { Button } from '../../shared/button/Button'
 import { ProjectTecnology } from '../../../interfaces/api'
+import { AuthContext } from '../../../context/AuthContext'
+import axios from 'axios'
 
 interface WorkItemProps {
   project_description: string;
@@ -11,9 +13,21 @@ interface WorkItemProps {
   project_technologies: ProjectTecnology[];
   project_topic: number;
   project_url: string;
+  _id: string;
 }
 
-export const WorkItem = ({ project_description, project_name, project_technologies, project_topic, project_url }: WorkItemProps) => {
+export const WorkItem = ({ project_description, project_name, project_technologies, project_topic, project_url, _id }: WorkItemProps) => {
+
+  const baseUrl = import.meta.env.VITE_API_URL;
+
+  if( !baseUrl ) return;
+
+  const { authState: { isLoggedIn } } = useContext( AuthContext );
+
+  const handleDelete = async(e: any, proyectId: string) => {
+    const deleteResponse = await axios.delete(`${baseUrl}/api/proyectos/${proyectId}`);
+    console.log({deleteResponse});
+  }
 
   const getItemTopic = (topic: number) => {
     switch (topic) {
@@ -33,6 +47,16 @@ export const WorkItem = ({ project_description, project_name, project_technologi
 
   return (
     <div className={`${styles.itemContainer} ${ Animations.bounceIn }`}>
+        {
+          ( isLoggedIn ) && (
+            <button
+              className={ styles.buttonContainer }
+              onClick={ (e) => handleDelete(e, _id) }
+            >
+              <i className='bx bx-trash-alt'></i>
+            </button>
+          )
+        }
         <div className={ styles.itemIconContainer }>
             <i className={ getItemTopic(project_topic) }></i>
         </div>

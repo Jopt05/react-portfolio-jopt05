@@ -1,6 +1,7 @@
 .itemContainer {
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 250px;
     min-height: 300px;
     padding: 30px 35px;
@@ -43,4 +44,29 @@
     margin-bottom: 25px;
     flex-wrap: wrap;
     /* background-color: red; */
+}
+
+.buttonContainer {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    cursor: pointer;
+    transition: opacity .2s ease-in-out;
+}
+
+.buttonContainer i {
+    font-size: 10px;
+    color: white;
+}
+
+.buttonContainer:hover {
+    opacity: 0.6;
 }
