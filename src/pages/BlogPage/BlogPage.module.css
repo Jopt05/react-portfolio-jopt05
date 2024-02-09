@@ -30,6 +30,7 @@
 .title {
     font-size: 50px !important;
     font-weight: bold;
+    line-height: 60px !important;
 }
 
 .blogContainer p {
