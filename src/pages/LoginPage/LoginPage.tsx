@@ -120,6 +120,7 @@ export const LoginPage = () => {
         />
         <Button 
           text='Login'
+          type='submit'
           onClick={ (e) => handleLogin(e) }
           isLoadingAction={ loginData.isLoading }
         />
