@@ -14,20 +14,13 @@ interface WorkItemProps {
   project_topic: number;
   project_url: string;
   _id: string;
+  project_state?: boolean;
+  onDelete?: (e: any, id: string) => void;
 }
 
-export const WorkItem = ({ project_description, project_name, project_technologies, project_topic, project_url, _id }: WorkItemProps) => {
-
-  const baseUrl = import.meta.env.VITE_API_URL;
-
-  if( !baseUrl ) return;
+export const WorkItem = ({ project_description, project_name, project_technologies, project_topic, project_url, _id, project_state, onDelete }: WorkItemProps) => {
 
   const { authState: { isLoggedIn } } = useContext( AuthContext );
-
-  const handleDelete = async(e: any, proyectId: string) => {
-    const deleteResponse = await axios.delete(`${baseUrl}/api/proyectos/${proyectId}`);
-    console.log({deleteResponse});
-  }
 
   const getItemTopic = (topic: number) => {
     switch (topic) {
@@ -46,12 +39,12 @@ export const WorkItem = ({ project_description, project_name, project_technologi
   }
 
   return (
-    <div className={`${styles.itemContainer} ${ Animations.bounceIn }`}>
+    <div className={`${styles.itemContainer} ${ (project_state == false) ? styles.itemContainerDisabled : '' } ${ Animations.bounceIn }`}>
         {
-          ( isLoggedIn ) && (
+          ( isLoggedIn && project_state == true ) && (
             <button
               className={ styles.buttonContainer }
-              onClick={ (e) => handleDelete(e, _id) }
+              onClick={ (e) => onDelete(e, _id) }
             >
               <i className='bx bx-trash-alt'></i>
             </button>
