@@ -20,22 +20,36 @@ export const useProjects = () => {
         setisLoading(false);
     }
 
-    const deleteProject = async(e: any, projectId: string) => {
+    const deleteOrActivate = async(e: any, projectId: string, project_state: boolean) => {
         e.preventDefault();
-        const projectsResponse = await axios.delete<Projects>(`${baseUrl}/api/proyectos/${projectId}`);
-        setProjects(
-            projects.map(p => {
-                if( p._id == projectId ) {
-                    p.project_state = false
-                }
-                return p
-            })
-        )
+        if( project_state ) {
+            const projectsResponse = await axios.delete<Projects>(`${baseUrl}/api/proyectos/${projectId}`);
+            setProjects(
+                projects.map(p => {
+                    if( p._id == projectId ) {
+                        p.project_state = false
+                    }
+                    return p
+                })
+            )
+        } else {
+            const projectsResponse = await axios.put<Projects>(`${baseUrl}/api/proyectos/${projectId}`, {
+                project_state: true
+            });
+            setProjects(
+                projects.map(p => {
+                    if( p._id == projectId ) {
+                        p.project_state = true
+                    }
+                    return p
+                })
+            )
+        }
     }
 
     return {
         projects,
         isLoading,
-        deleteProject
+        deleteOrActivate
     }
 }

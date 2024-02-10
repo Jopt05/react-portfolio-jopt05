@@ -11,6 +11,7 @@
     text-align: center;
     flex: 0 0 auto;
     align-items: center;
+    transition: background .2s ease-in-out;
 }
 
 .itemContainerDisabled {
@@ -64,6 +65,10 @@
     background-color: red;
     cursor: pointer;
     transition: opacity .2s ease-in-out;
+}
+
+.buttonActivate {
+    background-color: rgb(22, 92, 22);
 }
 
 .buttonContainer i {

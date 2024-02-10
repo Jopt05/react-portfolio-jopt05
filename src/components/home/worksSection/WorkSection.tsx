@@ -11,7 +11,7 @@ export const WorkSection = () => {
 
   const { authState } = useContext( AuthContext );
 
-  const { isLoading, projects, deleteProject } = useProjects();
+  const { isLoading, projects, deleteOrActivate } = useProjects();
 
   return (
     <div className={ styles.WorksectionContainer }>
@@ -41,7 +41,7 @@ export const WorkSection = () => {
               project_url={ project.project_url }
               key={index}
               project_state={ project.project_state }
-              onDelete={ (e, projectId) =>  deleteProject(e, projectId)}
+              onDelete={ (e, projectId, projectState) =>  deleteOrActivate(e, projectId, projectState)}
             />
           ))
         }

@@ -15,7 +15,7 @@ interface WorkItemProps {
   project_url: string;
   _id: string;
   project_state?: boolean;
-  onDelete?: (e: any, id: string) => void;
+  onDelete?: (e: any, id: string, projectState: boolean) => void;
 }
 
 export const WorkItem = ({ project_description, project_name, project_technologies, project_topic, project_url, _id, project_state, onDelete }: WorkItemProps) => {
@@ -44,9 +44,19 @@ export const WorkItem = ({ project_description, project_name, project_technologi
           ( isLoggedIn && project_state == true ) && (
             <button
               className={ styles.buttonContainer }
-              onClick={ (e) => onDelete(e, _id) }
+              onClick={ (e) => onDelete(e, _id, project_state) }
             >
               <i className='bx bx-trash-alt'></i>
+            </button>
+          )
+        }
+        {
+          ( isLoggedIn && project_state == false ) && (
+            <button
+              className={ `${styles.buttonContainer} ${styles.buttonActivate}` }
+              onClick={ (e) => onDelete(e, _id, project_state) }
+            >
+              <i className='bx bx-save'></i>
             </button>
           )
         }
