@@ -43,6 +43,20 @@
     margin: auto;
 }
 
+.themeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.themeButtonDark {
+    color: white;
+}
+
 @media only screen and (max-width: 600px) {
     .headerContainer {
         flex-direction: column;

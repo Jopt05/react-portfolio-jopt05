@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Logo from '../../../assets/logo.png'
 import styles from './Header.module.css'
 import Animations from '../../../Animations.module.css'
@@ -6,10 +6,16 @@ import globalStyles from '../../../Global.module.css'
 import { AuthContext } from '../../../context/AuthContext'
 import { ModalMessage } from '../modalMessage/ModalMessage'
 import { Link } from 'react-router-dom'
+import { ThemeContext } from '../../../context/ThemeContext'
 
 export const Header = () => {
 
   const { authState } = useContext( AuthContext );
+  const { themeState, changeTheme } = useContext( ThemeContext );
+
+  function handleChangeTheme() {
+    changeTheme();
+  }
 
   return (
     <>
@@ -34,6 +40,12 @@ export const Header = () => {
         <p className={ styles.text }>
             JOPT98@GMAIL.COM
         </p>
+        <button 
+          onClick={handleChangeTheme}
+          className={`${styles.themeButton} ${(themeState.isDarkMode ? styles.themeButtonDark : '')}`}
+        >
+          <i className={`bx bxs-${themeState.isDarkMode ? 'sun' : 'moon'}`}></i>
+        </button>
       </div>
       {
         (authState.isLoggedIn) && (  

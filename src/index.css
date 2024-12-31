@@ -9,10 +9,24 @@
 
 html {
   background-color: var(--BodyBg);
+  transition: background-color .2s ease-in-out;
 }
 
 body {
   margin: 0;
+}
+
+html.dark {
+  background-color: #1E201E;
+}
+
+html.dark p, html.dark h1, html.dark h2, html.dark h3 {
+  color: #697565
+}
+
+html.dark input, html.dark textarea {
+  background-color: #1E201E;
+  color: #697565;
 }
 
 .AppContainer {

@@ -7,6 +7,7 @@ import { PrivateRoute } from "./PrivateRoute";
 import { CreateBlogPage } from "../pages/CreateBlogPage/CreateBlogPage";
 import { BlogPage } from "../pages/BlogPage/BlogPage";
 import { Header } from "../components/shared/header/Header";
+import { ThemeProvider } from "../context/ThemeContext";
 
 const AppRouter = () => {
   return (
@@ -38,9 +39,11 @@ const AppRouter = () => {
 
 const AppState = ({ children }: any) => {
   return (
-    <AuthProvider>
-      { children }
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        { children }
+      </AuthProvider>
+    </ThemeProvider>
   )
 };
 

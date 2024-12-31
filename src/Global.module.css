@@ -17,3 +17,16 @@
     color: #5c5b66;
     line-height: 32px;
 }
+
+/* Dark palette  */
+.darkBackground {
+    background-color: '#1E201E';
+}
+
+.darkSBackground {
+    background-color: #3C3D37 !important;
+}
+
+.darkTextColor {
+    color: '#697565'
+}

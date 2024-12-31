@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './ContactForm.module.css'
 import globalStyles from '../../../Global.module.css'
 import Animations from '../../../Animations.module.css'
@@ -9,6 +9,7 @@ import { useForm } from '../../../hooks/useForm'
 import { useEmail } from '../../../hooks/useEmail'
 import { handleSubmitEvent } from '../../../interfaces/form'
 import { FadeInMessage } from '../../shared/fadeInMessage/FadeInMessage'
+import { ThemeContext } from '../../../context/ThemeContext'
 
 interface ContactFormProps {
     isShown: boolean;
@@ -16,6 +17,8 @@ interface ContactFormProps {
 }
 
 export const ContactForm = ({ isShown, onSubmitted }: ContactFormProps) => {
+
+    const { themeState } = useContext(ThemeContext)
 
     const { emailData, sendEmail } = useEmail();
 
@@ -44,7 +47,7 @@ export const ContactForm = ({ isShown, onSubmitted }: ContactFormProps) => {
     
   return (
     <form 
-        className={`${ styles.formContainer } ${ isShown ? `${Animations.bounceIn} ${ styles.formContainerShown }` : '' }`}
+        className={`${ styles.formContainer } ${ isShown ? `${Animations.bounceIn} ${ styles.formContainerShown }` : '' } ${( themeState.isDarkMode ) ? globalStyles.darkSBackground : ''}`}
         onSubmit={ (e) => handleSubmit(e) }
     >
         <div className={ styles.formImageContainer }>

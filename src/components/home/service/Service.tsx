@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Service.module.css'
 import globalStyles from './../../../Global.module.css'
 import Animations from './../../../Animations.module.css'
+import { ThemeContext } from '../../../context/ThemeContext';
 
 interface ServiceProps {
     serviceIcon: string;
@@ -12,8 +13,11 @@ interface ServiceProps {
 }
 
 export const Service = ({ goesLeft, serviceDescription, serviceIcon, serviceImage, serviceName }: ServiceProps) => {
+
+    const { themeState } = useContext( ThemeContext );
+
   return (
-    <div className={`${styles.serviceContainer} ${ Animations.bounceIn } ${ (goesLeft) ? styles.goesLeft : '' }`}>
+    <div className={`${styles.serviceContainer} ${ Animations.bounceIn } ${ (goesLeft) ? styles.goesLeft : '' } ${( themeState.isDarkMode ) ? globalStyles.darkSBackground : ''}`}>
         <div className={ styles.serviceContainerItem }>
             <div className={ styles.serviceIconContainer }>
                 <i className={ serviceIcon }></i>
