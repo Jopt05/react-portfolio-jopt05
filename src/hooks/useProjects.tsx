@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Project, Projects } from '../interfaces/api';
+import { Project, ProjectResponse } from '../interfaces/api';
 import axios from 'axios';
 
 export const useProjects = () => {
@@ -15,31 +15,31 @@ export const useProjects = () => {
     
     const getProjects = async() => {
         setisLoading(true);
-        const projectsResponse = await axios.get<Projects>(`${baseUrl}/api/proyectos/`);
-        setProjects( projectsResponse.data.projects );
+        const projectsResponse = await axios.get<ProjectResponse>(`${baseUrl}/projects`);
+        setProjects( projectsResponse.data.payload );
         setisLoading(false);
     }
 
     const deleteOrActivate = async(e: any, projectId: string, project_state: boolean) => {
         e.preventDefault();
         if( project_state ) {
-            const projectsResponse = await axios.delete<Projects>(`${baseUrl}/api/proyectos/${projectId}`);
+            const projectsResponse = await axios.delete<ProjectResponse>(`${baseUrl}/projects`);
             setProjects(
                 projects.map(p => {
-                    if( p._id == projectId ) {
-                        p.project_state = false
+                    if( p.id.toString() == projectId ) {
+                        p.projectState = false
                     }
                     return p
                 })
             )
         } else {
-            const projectsResponse = await axios.put<Projects>(`${baseUrl}/api/proyectos/${projectId}`, {
+            const projectsResponse = await axios.put<Project>(`${baseUrl}/projects`, {
                 project_state: true
             });
             setProjects(
                 projects.map(p => {
-                    if( p._id == projectId ) {
-                        p.project_state = true
+                    if( p.id.toString() == projectId ) {
+                        p.projectState = true
                     }
                     return p
                 })

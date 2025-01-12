@@ -3,7 +3,7 @@ import styles from './WorkItem.module.css'
 import globalStyles from './../../../Global.module.css'
 import Animations from './../../../Animations.module.css'
 import { Button } from '../../shared/button/Button'
-import { ProjectTecnology } from '../../../interfaces/api'
+import { ProjectTechnology } from '../../../interfaces/api'
 import { AuthContext } from '../../../context/AuthContext'
 import axios from 'axios'
 import { ThemeContext } from '../../../context/ThemeContext'
@@ -11,8 +11,8 @@ import { ThemeContext } from '../../../context/ThemeContext'
 interface WorkItemProps {
   project_description: string;
   project_name: string;
-  project_technologies: ProjectTecnology[];
-  project_topic: number;
+  project_technologies: ProjectTechnology[];
+  project_topic: string;
   project_url: string;
   _id: string;
   project_state?: boolean;
@@ -24,15 +24,15 @@ export const WorkItem = ({ project_description, project_name, project_technologi
   const { authState: { isLoggedIn } } = useContext( AuthContext );
   const { themeState } = useContext( ThemeContext );
 
-  const getItemTopic = (topic: number) => {
+  const getItemTopic = (topic: string) => {
     switch (topic) {
-      case 1:
+      case 'MOBILE':
         return 'bx bx-code-alt';
 
-      case 2:
+      case 'DESKTOP':
         return 'bx bx-desktop';
         
-      case 3:
+      case 'WEB':
         return 'bx bxs-cloud-download';
     
       default:
@@ -76,7 +76,7 @@ export const WorkItem = ({ project_description, project_name, project_technologi
         </p>
         <div className={ styles.itemToolsContainer }>
           {
-            project_technologies.map((technology) => (<i className={ technology.tech_name }></i>))
+            project_technologies.map((technology) => (<i className={ technology.techName }></i>))
           }
         </div>
         <Button 

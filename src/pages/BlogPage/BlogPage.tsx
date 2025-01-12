@@ -3,8 +3,8 @@ import styles from './BlogPage.module.css'
 import Markdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
-import { GetBlog } from '../../interfaces/api';
 import { Loader } from '../../components/shared/Loader/Loader';
+import { BlogResponse } from '../../interfaces/api';
 
 export const BlogPage = () => {
 
@@ -14,8 +14,8 @@ export const BlogPage = () => {
 
     const { id } = useParams();
 
-    const { data, error, loading } = useFetch<GetBlog>({
-        url: `${baseUrl}/api/blogs/${id}`,
+    const { data, error, loading } = useFetch<BlogResponse>({
+        url: `${baseUrl}/blogs/${id}`,
         method: 'get'
     });
 
@@ -23,7 +23,7 @@ export const BlogPage = () => {
 
   useEffect(() => {
     if ( data == null ) return;
-    setMarkdown(data.blog.blog_text)
+    setMarkdown(data.payload.blogText)
   }, [data])
   
 
@@ -41,7 +41,7 @@ export const BlogPage = () => {
                     <>
                         <div className={ styles.titleContainer }>
                             <p className={ styles.title }>
-                                { data.blog.blog_name }
+                                { data.payload.blogName }
                             </p>
                         </div>
                         <Markdown>

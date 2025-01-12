@@ -6,8 +6,8 @@ import { AuthContext } from '../../context/AuthContext'
 import { ModalMessage } from '../../components/shared/modalMessage/ModalMessage'
 import { Link } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
-import { Blogs } from '../../interfaces/api'
 import { Loader } from '../../components/shared/Loader/Loader'
+import { BlogsResponse } from '../../interfaces/api'
 
 export const BlogsIndex = () => {
 
@@ -17,8 +17,8 @@ export const BlogsIndex = () => {
 
   const { authState } = useContext( AuthContext );
 
-  const { data, error, loading } = useFetch<Blogs>({
-    url: `${baseUrl}/api/blogs/`,
+  const { data, error, loading } = useFetch<BlogsResponse>({
+    url: `${baseUrl}/blogs`,
     method: 'get'
   });
 
@@ -50,12 +50,12 @@ export const BlogsIndex = () => {
           (loading) && <Loader />
         }
         {
-          ( data != null ) && data.blogs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime() ).map( blog => (
+          ( data != null ) && data.payload.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime() ).map( blog => (
             <BlogItem 
               createdAt={ new Date(blog.createdAt) }
-              link={ `/blogs/${blog._id}/read` }
-              name={ blog.blog_name }
-              id={ blog._id }
+              link={ `/blogs/${blog.id}/read` }
+              name={ blog.blogName }
+              id={ blog.id.toString() }
             />
           ) )
         }

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ServicesSection.module.css'
 import { Service } from '../service/Service'
 import useFetch from '../../../hooks/useFetch';
-import { Services } from '../../../interfaces/api';
+import { ServicesResponse } from '../../../interfaces/api';
 import { Loader } from '../../shared/Loader/Loader';
 
 export const ServicesSection = () => {
@@ -11,17 +11,17 @@ export const ServicesSection = () => {
 
   if( !baseUrl ) return;
 
-  const { data, error, loading } = useFetch<Services>({
-    url: `${baseUrl}/api/servicios`,
+  const { data, error, loading } = useFetch<ServicesResponse>({
+    url: `${baseUrl}/services`,
     method: 'get'
   });
 
-  const getIconName = (iconIndex: number) => {
+  const getIconName = (iconIndex: string) => {
     switch (iconIndex) {
-      case 0:
+      case 'CODE':
         return 'bx bx-code-alt'
         
-      case 1: 
+      case 'WEB': 
         return 'bx bx-devices'
     
       default:
@@ -33,13 +33,13 @@ export const ServicesSection = () => {
     <div className={ styles.servicesContainer }>
         {
           ( !loading && data != null ) && 
-            data.services.map((service, index) => service.service_state != false && (
+            data.payload.map((service, index) => service.serviceState != false && (
               <Service 
                 goesLeft={ ( index % 2 == 0 ) }
-                serviceDescription={ service.service_description }
-                serviceImage={ service.service_image }
-                serviceName={ service.service_name }
-                serviceIcon={ getIconName(service.service_topic) }
+                serviceDescription={ service.serviceDescription }
+                serviceImage={ service.serviceImage }
+                serviceName={ service.serviceName }
+                serviceIcon={ getIconName(service.serviceTopic) }
                 key={index}
               />
             ))
