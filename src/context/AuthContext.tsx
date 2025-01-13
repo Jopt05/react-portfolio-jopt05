@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }: any) => {
       const token = localStorage.getItem('token');
       if( !token ) return;
       axios.post(
-        `${baseUrl}/api/usuarios/Auth`,
+        `${baseUrl}/auth`,
         JSON.stringify({
             token
         }), {
