@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './LoginPage.module.css'
 import globalStyles from '../../Global.module.css'
-import Animations from '../../Animations.module.css'
 import { Input } from '../../components/shared/Input/Input'
 import { Button } from '../../components/shared/button/Button'
-import { User } from '../../interfaces/api';
 import { useForm } from '../../hooks/useForm'
 import { handleSubmitEvent } from '../../interfaces/form'
 import axios from 'axios'
 import { FadeInMessage } from '../../components/shared/fadeInMessage/FadeInMessage'
 import { redirect, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
+import { LoginResponse } from '../../interfaces/api'
 
 interface LoginDataState {
-  data: User | null;
+  data: LoginResponse | null;
   isLoading: boolean;
   errorMessage: string | null;
 }
@@ -42,10 +41,10 @@ export const LoginPage = () => {
   const handleLogin = (e: handleSubmitEvent) => {
     setLoginData({ ...loginData, isLoading: true });
     e.preventDefault();
-    axios.post<User>(
-        `${baseUrl}/api/usuarios/login`,
+    axios.post<LoginResponse>(
+        `${baseUrl}/login`,
         JSON.stringify({
-          user_name: user_name,
+          username: user_name,
           password: password
         }), {
           headers: {
@@ -59,7 +58,7 @@ export const LoginPage = () => {
             errorMessage: 'Login successfull!',
             isLoading: false
           })
-          signIn( response.data.token );
+          signIn( response.data.payload );
           setTimeout(() => {
             navigate('/');
           }, 1500);
@@ -87,7 +86,7 @@ export const LoginPage = () => {
     if( loginData.data == null ) return;
     localStorage.setItem(
       'token',
-      loginData.data.token
+      loginData.data.payload
     )
   }, [loginData])
   

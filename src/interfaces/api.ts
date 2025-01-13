@@ -69,3 +69,12 @@ export interface BlogResponse {
     message:   string;
     payload:   Blog;
 }
+
+export interface LoginResponse {
+    timestamp: Date;
+    status:    string;
+    code:      number;
+    message:   string;
+    payload:   string;
+}
+

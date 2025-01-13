@@ -4,16 +4,16 @@ import { ModalMessage } from '../../components/shared/modalMessage/ModalMessage'
 import Markdown from 'react-markdown'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-import { GetBlog } from '../../interfaces/api'
 import { Input } from '../../components/shared/Input/Input'
 import { Button } from '../../components/shared/button/Button'
 import { AuthContext } from '../../context/AuthContext'
+import { BlogResponse } from '../../interfaces/api'
 
 type Action = "post" | "put";
 
 interface BlogInfo {
-  blog_name: string;
-  blog_text: string;
+  name: string;
+  blogText: string;
 }
 
 export const CreateBlogPage = () => {
@@ -31,8 +31,8 @@ export const CreateBlogPage = () => {
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const [action, setAction] = useState<Action>('put');
   const [blogInfo, setBlogInfo] = useState<BlogInfo>({
-    blog_name: 'Titulo',
-    blog_text: 'Texto de ejemplo'
+    name: 'Titulo',
+    blogText: 'Texto de ejemplo'
   });
 
   const handleChange = (value: string, blogAttr: keyof BlogInfo) => {
@@ -45,11 +45,11 @@ export const CreateBlogPage = () => {
   const handleSubmit = async() => {
     setIsLoadingSubmit(true);
     const response = await axios({
-      baseURL: `${baseUrl}/api/blogs/${ !id ? '' : id }`,
+      baseURL: `${baseUrl}/blogs/${ !id ? '' : id }`,
       method: action,
       data: JSON.stringify({
-        blog_name: blogInfo.blog_name,
-        blog_text: blogInfo.blog_text
+        name: blogInfo.name,
+        blogText: blogInfo.blogText
       }),
       headers: {
         "Content-Type": "application/json",
@@ -73,13 +73,13 @@ export const CreateBlogPage = () => {
       setIsLoading(false);
       return
     };
-    axios.get<GetBlog>(
-      `${baseUrl}/api/blogs/${id}`
+    axios.get<BlogResponse>(
+      `${baseUrl}/blogs/${id}`
     )
       .then( response => {
         setBlogInfo({
-          blog_name: response.data.blog.blog_name,
-          blog_text: response.data.blog.blog_text
+          name: response.data.payload.blogName,
+          blogText: response.data.payload.blogText
         })
         setIsLoading(false);
       })
@@ -95,11 +95,11 @@ export const CreateBlogPage = () => {
         <div className={ styles.blogContainer }>
           <div className={ styles.titleContainer }>
               <p className={ styles.title }>
-                  { blogInfo.blog_name }
+                  { blogInfo.name }
               </p>
           </div>
           <Markdown>
-            { blogInfo.blog_text }
+            { blogInfo.blogText }
           </Markdown>
         </div>
       </div>
@@ -107,13 +107,13 @@ export const CreateBlogPage = () => {
         <Input 
           name='blog_name'
           placeholder='Ingresa título de blog'
-          value={ blogInfo.blog_name }
-          onChange={ (e) => handleChange( e.target.value, 'blog_name' ) }
+          value={ blogInfo.name }
+          onChange={ (e) => handleChange( e.target.value, 'name' ) }
         />
         <textarea 
           className={ styles.editorText }
-          onChange={ (e) => handleChange( e.target.value, 'blog_text' ) }
-          value={ blogInfo.blog_text }
+          onChange={ (e) => handleChange( e.target.value, 'blogText' ) }
+          value={ blogInfo.blogText }
         />
         <div className={ styles.buttonsContainer }>
           <Button 
