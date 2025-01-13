@@ -23,7 +23,11 @@ export const useProjects = () => {
     const deleteOrActivate = async(e: any, projectId: string, project_state: boolean) => {
         e.preventDefault();
         if( project_state ) {
-            const projectsResponse = await axios.delete<ProjectResponse>(`${baseUrl}/projects`);
+            const projectsResponse = await axios.delete<ProjectResponse>(`${baseUrl}/projects/${projectId}`, {
+                data: {
+                    projectState: false
+                }
+            });
             setProjects(
                 projects.map(p => {
                     if( p.id.toString() == projectId ) {
@@ -33,8 +37,10 @@ export const useProjects = () => {
                 })
             )
         } else {
-            const projectsResponse = await axios.put<Project>(`${baseUrl}/projects`, {
-                project_state: true
+            const projectsResponse = await axios.delete<Project>(`${baseUrl}/projects/${projectId}`, {
+                data: {
+                    projectState: true
+                }
             });
             setProjects(
                 projects.map(p => {
