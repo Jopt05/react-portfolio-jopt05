@@ -41,8 +41,8 @@ export interface ProjectTechnology {
     id:        number;
     techName:  string;
     state:     boolean;
-    createdAt: Date;
-    updatedAt: Date;
+    // createdAt: Date;
+    // updatedAt: Date;
 }
 
 export interface BlogsResponse {
