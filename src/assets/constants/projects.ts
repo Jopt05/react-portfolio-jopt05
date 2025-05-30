@@ -97,7 +97,7 @@ export const PROJECTS = {
             ],
             "projectTopic": "MOBILE",
             "projectState": true,
-            "projectUrl": "https://expo.dev/accounts/jopt05/projects/react-native-notes-app/builds/4d622f9b-4d5f-441b-b971-0a7ac683ad20",
+            "projectUrl": "https://expo.dev/accounts/jopt05/projects/react-native-notes-app/builds/55f4bc9a-cd7c-424e-85bc-58d3b6716b4d",
             "createdAt": "2025-01-12T23:10:55.296+00:00",
             "updatedAt": "2025-01-13T02:17:29.755+00:00"
         },
