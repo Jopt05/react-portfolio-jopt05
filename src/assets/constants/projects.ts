@@ -126,6 +126,32 @@ export const PROJECTS = {
             "projectUrl": "https://mood-tracker-angular.vercel.app/",
             "createdAt": "2025-05-25T02:39:06.269+00:00",
             "updatedAt": "2025-05-25T02:39:06.269+00:00"
+        },
+        {
+            "id": 101,
+            "projectName": "Mood tracker mobile",
+            "projectDescription": "App made with React Native and Expo",
+            "projectTechnologies": [
+                {
+                    "id": 2,
+                    "techName": "bx bxl-javascript",
+                    "state": true,
+                    "createdAt": "2025-01-10T23:44:18.076+00:00",
+                    "updatedAt": "2025-01-10T23:44:18.076+00:00"
+                },
+                {
+                    "id": 4,
+                    "techName": "bx bxl-css3",
+                    "state": true,
+                    "createdAt": "2025-01-10T23:44:31.800+00:00",
+                    "updatedAt": "2025-01-10T23:44:31.800+00:00"
+                }
+            ],
+            "projectTopic": "MOBILE",
+            "projectState": true,
+            "projectUrl": "https://expo.dev/accounts/jopt05/projects/mood-tracker-react-native/builds/797d853c-90c3-468b-9dbc-a0d0ec526836",
+            "createdAt": "2025-05-25T02:39:06.269+00:00",
+            "updatedAt": "2025-05-25T02:39:06.269+00:00"
         }
     ]
 }
