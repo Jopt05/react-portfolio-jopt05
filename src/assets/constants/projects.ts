@@ -63,25 +63,32 @@ export const PROJECTS = {
         //     "createdAt": "2025-01-12T23:08:55.026+00:00",
         //     "updatedAt": "2025-01-12T23:08:55.026+00:00"
         // },
-        // {
-        //     "id": 53,
-        //     "projectName": "My Unsplash",
-        //     "projectDescription": "Small challenge in which file uploading and accounts are used.",
-        //     "projectTechnologies": [
-        //         {
-        //             "id": 1,
-        //             "techName": "bx bxl-react",
-        //             "state": true,
-        //             "createdAt": "2025-01-10T23:43:55.380+00:00",
-        //             "updatedAt": "2025-01-10T23:43:55.380+00:00"
-        //         }
-        //     ],
-        //     "projectTopic": "DESKTOP",
-        //     "projectState": true,
-        //     "projectUrl": "https://my-unsplash-frontend-five.vercel.app/",
-        //     "createdAt": "2025-01-12T23:09:53.002+00:00",
-        //     "updatedAt": "2025-01-12T23:09:53.002+00:00"
-        // },
+        {
+            "id": 53,
+            "projectName": "Kanban board",
+            "projectDescription": "Fullstack project from Frontend mentor made with React and Nest",
+            "projectTechnologies": [
+                {
+                    "id": 1,
+                    "techName": "bx bxl-react",
+                    "state": true,
+                    "createdAt": "2025-01-10T23:43:55.380+00:00",
+                    "updatedAt": "2025-01-10T23:43:55.380+00:00"
+                },
+                {
+                    "id": 6,
+                    "techName": "bx bxl-nodejs",
+                    "state": true,
+                    "createdAt": "2025-01-10T23:44:43.716+00:00",
+                    "updatedAt": "2025-01-10T23:44:43.716+00:00"
+                }
+            ],
+            "projectTopic": "DESKTOP",
+            "projectState": true,
+            "projectUrl": "https://react-kanban-ruby.vercel.app/",
+            "createdAt": "2025-01-12T23:09:53.002+00:00",
+            "updatedAt": "2025-01-12T23:09:53.002+00:00"
+        },
         // {
         //     "id": 54,
         //     "projectName": "Notes App",
